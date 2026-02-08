@@ -9,6 +9,10 @@ require (
 	github.com/Masterminds/sprig/v3 v3.3.0
 	github.com/alecthomas/chroma/v2 v2.23.1
 	github.com/aryann/difflib v0.0.0-20210328193216-ff5ff6dc229b
+	github.com/caddy-dns/cloudflare v0.2.2
+	github.com/caddyserver/certmagic v0.25.1
+	github.com/caddyserver/zerossl v0.1.4
+	github.com/cloudflare/circl v1.6.2
 	github.com/caddyserver/certmagic v0.25.2
 	github.com/caddyserver/zerossl v0.1.5
 	github.com/cloudflare/circl v1.6.3
@@ -69,7 +73,6 @@ require (
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
 	github.com/bytedance/sonic v1.14.0 // indirect
 	github.com/bytedance/sonic/loader v0.3.0 // indirect
-	github.com/caddy-dns/cloudflare v0.2.2 // indirect
 	github.com/ccoveille/go-safecast/v2 v2.0.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
