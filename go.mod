@@ -29,6 +29,7 @@ require (
 	github.com/mholt/acmez/v3 v3.1.4
 	github.com/painterQ/poplar v0.0.0-20260208033234-e18079ef1a34
 	github.com/mholt/acmez/v3 v3.1.6
+	github.com/painterQ/poplar v0.0.0-20260208093356-20be05acf4e2
 	github.com/prometheus/client_golang v1.23.2
 	github.com/quic-go/quic-go v0.59.0
 	github.com/smallstep/certificates v0.30.0-rc3

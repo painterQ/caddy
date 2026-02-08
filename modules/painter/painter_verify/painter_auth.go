@@ -159,6 +159,7 @@ func ParseAndCheckToken(r *http.Request, log *zap.Logger) (user caddyauth.User, 
 			"username": claims.Username,
 			"email":    claims.Email,
 			"roles":    string(claims.Role),
+			"ding_id":  claims.DingID,
 		},
 	}
 	authUser := claims.User
