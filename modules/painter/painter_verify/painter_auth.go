@@ -99,6 +99,7 @@ func GenerateJwt(user *orm_auth.User) (string, error) {
 			Username: user.Name,
 			Email:    user.EMail,
 			Role:     auth.Role(user.Role),
+			DingID:   user.DingID,
 		},
 	}
 	// 生成token

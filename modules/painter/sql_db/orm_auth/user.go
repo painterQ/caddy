@@ -59,6 +59,7 @@ func (u *User) Init(tx *gorm.DB, log *logger.Logger) (err error) {
 			return nil
 		}
 		u := &User{
+			ID:     user.ID,
 			Role:   user.Role,
 			Name:   user.Name,
 			EMail:  user.EMail,
