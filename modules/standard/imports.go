@@ -15,4 +15,7 @@ import (
 	_ "github.com/caddyserver/caddy/v2/modules/filestorage"
 	_ "github.com/caddyserver/caddy/v2/modules/logging"
 	_ "github.com/caddyserver/caddy/v2/modules/metrics"
+	_ "github.com/caddyserver/caddy/v2/modules/painter/auth"
+	_ "github.com/caddyserver/caddy/v2/modules/painter/login"
+	_ "github.com/caddyserver/caddy/v2/modules/painter/sql_db"
 )

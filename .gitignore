@@ -29,3 +29,4 @@ caddy-dist
 # IDE files
 .idea/
 .vscode/
+sqlite.db
