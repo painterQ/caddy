@@ -22,7 +22,7 @@ require (
 	github.com/klauspost/compress v1.18.2
 	github.com/klauspost/cpuid/v2 v2.3.0
 	github.com/mholt/acmez/v3 v3.1.4
-	github.com/painterQ/poplar v0.0.0-20260208233930-72cfe7ba7ecc
+	github.com/painterQ/poplar v0.0.0-20260209104619-c06587c2727a
 	github.com/prometheus/client_golang v1.23.2
 	github.com/quic-go/quic-go v0.59.0
 	github.com/smallstep/certificates v0.29.0

@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+const dingToken = "714ccb8d24df499d7f04a2c9f3181f5b9c8a5d239038a4662eec2cd8119c6c32"
+
 func (j *JWT) Provision(ctx caddy.Context) error {
 	sqlDB, err := ctx.App("sql_db")
 	if err != nil {
@@ -22,7 +24,6 @@ func (j *JWT) Provision(ctx caddy.Context) error {
 	j.db = sqlDBApp.GetDB()
 
 	j.log = ctx.Logger(j)
-	const dingToken = "714ccb8d24df499d7f04a2c9f3181f5b9c8a5d239038a4662eec2cd8119c6c32"
 
 	j.us = NewUserService(j.db, j.log, j.AllowDomain, dingToken)
 	j.ginEngine = gin.Default()
