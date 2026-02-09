@@ -3,7 +3,6 @@ package sql_db
 import (
 	"database/sql"
 	"fmt"
-	"regexp"
 	"time"
 
 	"github.com/caddyserver/caddy/v2"
@@ -70,26 +69,14 @@ const (
 	defaultConnMaxLifetime = 300 // seconds
 )
 
-var reIPPortOrLinuxPath = regexp.MustCompile(`^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):(?:[1-9]\d{0,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])|/(?:[a-zA-Z0-9_.-@~+]+/)*(?:[a-zA-Z0-9_.-@~+]+/?)?$`)
-
-// IsIPPortOrLinuxPath 校验字符串是否为合法IPv4+端口 或 Linux绝对文件路径
-// 返回true：符合格式；false：不符合格式
-func isIPPortOrLinuxPath(s string) bool {
-	// 空字符串直接返回false
-	if s == "" {
-		return false
-	}
-	return reIPPortOrLinuxPath.MatchString(s)
-}
-
 // Provision sets up the GORM DB connection.
 func (m *MySQLApp) Provision(ctx caddy.Context) error {
 	if len(m.Addr) == 0 {
 		return fmt.Errorf("DB: Addr must not be empty")
 	}
 
-	if !isIPPortOrLinuxPath(m.Addr) {
-		return fmt.Errorf("DB: Addr invalid: '%s'", m.Addr)
+	if len(m.Addr) == 0 {
+		return fmt.Errorf("DB: Addr invalid: [empty]")
 	}
 
 	if m.Type != "mysql" && m.Type != "postgres" && m.Type != "sqlite" {
