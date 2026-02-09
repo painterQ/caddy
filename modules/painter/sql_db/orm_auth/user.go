@@ -18,9 +18,6 @@ type User struct {
 	Role             string    `gorm:"role;size:20" json:"role"`
 	EMail            string    `gorm:"email;size:255;not null" json:"email"`
 	MainDeviceHash   string    `gorm:"main_device_hash;size:100" json:"-"`
-	AvatarSmail      []byte    `gorm:"avatar_smail;type:BLOB" json:"avatar_smail"`   //80*80 webp格式 25.6kB
-	AvatarMedium     []byte    `gorm:"avatar_medium;type:BLOB" json:"avatar_medium"` //200*200 156.3kB
-	AvatarBig        []byte    `gorm:"avatar_big;type:BLOB" json:"avatar_big"`       //320*320 webp格式 400kB
 	AvatarSourcePath string    `gorm:"avatar_source_path;size:255" json:"-"`
 	Favorite         string    `gorm:"type:text" json:"-"` // 存储JSON字符串
 	FavoriteValue    Favorite  `gorm:"-" json:"favorite"`

@@ -12,7 +12,6 @@ import (
 const (
 	LoginErrorMaxCount = 3                  // 连续登录失败最大次数
 	LoginLockDuration  = 10 * time.Minute   // 锁定时长：10分钟
-	JwtSecret          = "your-secret-key"  // JWT加密秘钥，生产环境建议放配置文件
 	JwtExpireDuration  = 7 * 24 * time.Hour // JWT有效期：7天
 )
 
