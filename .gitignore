@@ -30,3 +30,4 @@ caddy-dist
 .idea/
 .vscode/
 sqlite.db
+caddy

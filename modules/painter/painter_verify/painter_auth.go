@@ -22,7 +22,7 @@ func init() {
 	caddy.RegisterModule(&JWT{})
 }
 
-const CookieName = "token"
+const CookieName = "peacock"
 
 // 确保JWT结构体实现Caddy所需的核心接口
 var (

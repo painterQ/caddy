@@ -296,6 +296,8 @@ github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 h1:C3w9PqII01/Oq
 github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822/go.mod h1:+n7T8mK8HuQTcFwEeznm/DIxMOiR9yIdICNftLE1DvQ=
 github.com/painterQ/poplar v0.0.0-20260209104619-c06587c2727a h1:VPQuFZgplbjxBKBszqJMXGeTibOv+Upg9055xJizwQ8=
 github.com/painterQ/poplar v0.0.0-20260209104619-c06587c2727a/go.mod h1:AxJ8Yuiz/O2Dk8uNnR7fr5wEJKNOrdXO5284jaiatsY=
+github.com/painterQ/poplar v0.0.0-20260223073142-8c8374f631f1 h1:cv0MgMJQlmp5Ov3TVYk0ZPS6Fy1IBmYCkZj4ggMkcok=
+github.com/painterQ/poplar v0.0.0-20260223073142-8c8374f631f1/go.mod h1:AxJ8Yuiz/O2Dk8uNnR7fr5wEJKNOrdXO5284jaiatsY=
 github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58 h1:onHthvaw9LFnH4t2DcNVpwGmV9E1BkGknEliJkfwQj0=
 github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58/go.mod h1:DXv8WO4yhMYhSNPKjeNKa5WY9YCIEBRbNzFFPJbWO6Y=
 github.com/pelletier/go-toml v1.2.0/go.mod h1:5z9KED0ma1S8pY6P1sdut58dfprrGBbd/94hg7ilaic=

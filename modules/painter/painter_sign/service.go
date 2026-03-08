@@ -2,10 +2,12 @@ package painter_sign
 
 import (
 	"bytes"
+	"crypto/rand"
 	"encoding/hex"
 	"fmt"
 	"io"
 	"io/fs"
+	"math/big"
 	"mime"
 	"net"
 	"net/http"
@@ -20,7 +22,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/painterQ/poplar/ip2region"
 	"github.com/painterQ/poplar/logger"
-	"github.com/painterQ/poplar/utils/common"
 	"github.com/painterQ/poplar/utils/web_helper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -245,7 +246,7 @@ func (u *UserService) HandleLogin(ctx *gin.Context) {
 
 	//签发JWT，放到cookie，httpOnly
 	ctx.SetCookie(
-		"token",
+		painterAuth.CookieName,
 		tokenStr,
 		int(orm_auth.JwtExpireDuration.Seconds()),
 		"/",
@@ -267,9 +268,23 @@ type challengeResponse struct {
 	Until string `json:"until"`
 }
 
+func getRandomStr() string {
+	const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	result := make([]byte, 6)
+	charsetLen := big.NewInt(int64(len(charset)))
+
+	for i := range result {
+		// 从加密安全的随机源生成索引
+		idx, _ := rand.Int(rand.Reader, charsetLen)
+		result[i] = charset[idx.Int64()]
+	}
+
+	return string(result)
+}
+
 // HandleGetChallenge 获取验证码
 func (u *UserService) HandleGetChallenge(ctx *gin.Context) {
-	challengeValue := common.RandomStr(6)
+	challengeValue := getRandomStr()
 	until := time.Now().Add(ChallengeExpire)
 	response := challengeResponse{Until: until.Format(time.RFC3339)}
 
@@ -302,10 +317,19 @@ func (u *UserService) HandleGetChallenge(ctx *gin.Context) {
 	}
 	u.challengeMap.Store(req.DeviceID, challenge)
 
+	region := "未知"
+	remoteIP := net.ParseIP(ctx.Request.RemoteAddr)
+	if remoteIP != nil {
+		region, err = ip2region.QueryRegion(remoteIP)
+		if err != nil {
+			u.log.Err(fmt.Errorf("HandleGetChallenge QueryRegion (%v) err: %w", ctx.Request.RemoteAddr, err))
+			region = "未知"
+		}
+	}
 	if len(loginInfo) > 0 {
-		u.log.DingMarkdown("异常登录", fmt.Sprintf("* 异常原因: %v\n设备: %v\n* 验证码: **%v**", loginInfo, req.DeviceInfo, challengeValue), []string{user.DingID})
+		u.log.DingMarkdown("异常登录", fmt.Sprintf("* 异常原因: %v\n设备: %v\n位置: %v\n* 验证码: **%v**", loginInfo, req.DeviceInfo, region, challengeValue), []string{user.DingID})
 	} else {
-		u.log.DingMarkdown("登录", fmt.Sprintf(`验证码: %v，设备: %v`, challengeValue, req.DeviceInfo), []string{user.DingID})
+		u.log.DingMarkdown("登录", fmt.Sprintf("验证码: %v，设备: %v\n位置: %v", challengeValue, req.DeviceInfo, region), []string{user.DingID})
 	}
 
 	ctx.JSON(http.StatusOK, response)

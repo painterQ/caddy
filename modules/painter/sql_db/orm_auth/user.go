@@ -33,7 +33,7 @@ type Favorite struct {
 
 var userInitList = []User{
 	{
-		ID:            0,
+		ID:            1,
 		DingID:        "painterqiao",
 		Role:          "admin",
 		Name:          "painter",
@@ -41,11 +41,11 @@ var userInitList = []User{
 		FavoriteValue: Favorite{Colors: []string{"red", "green", "blue"}},
 	},
 	{
-		ID:            1,
+		ID:            2,
 		DingID:        "zve2uth",
 		Role:          "user",
 		Name:          "xixi",
-		EMail:         "xixi@qq.com",
+		EMail:         "1102329106@qq.com",
 		FavoriteValue: Favorite{Colors: []string{"red", "green", "blue"}},
 	},
 }
